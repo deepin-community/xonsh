@@ -1,5 +1,494 @@
-template-repository (1.0-1) unstable; urgency=medium
+xonsh (0.14.1+dfsg-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream version 0.14.1+dfsg
+  * d/rules: move all xonsh-* coreutil-reimplementation binaries to usr/share
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 06 Oct 2023 11:20:46 +0000
+
+xonsh (0.14.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.14.0
+  * Previously bundled xontribs (abbrevs, bashisms, free_cwd,
+    whole_word_jumping, fish_completer, vox, autovox, voxapi, pdb, xog) have
+    been transferred to separate upstream repositories, and are consequently
+    dropped from this one. Until and unless they are independently packaged,
+    they can be installed as `pip` packages.
+
+ -- Gordon Ball <gordon@chronitis.net>  Wed, 05 Jul 2023 21:56:46 +0200
+
+xonsh (0.13.4+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.13.4+dfsg
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 06 Jan 2023 22:47:21 +0000
+
+xonsh (0.13.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.13.3+dfsg
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 01 Oct 2022 18:54:27 +0000
+
+xonsh (0.13.1+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Refresh patches.
+  * Dropped python3-binary.patch, superseded upstream.
+  * Build-Depend on python3-setuptools >= 61, now required.
+  * We no longer need to remove xon.sh from /usr/bin.
+  * Patch out use of the furo template in docs, not packaged in Debian.
+  * Drop patch virtualenv-20.16.patch, superseded upstream.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 14 Sep 2022 21:49:15 +0200
+
+xonsh (0.12.4+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * Forwarded python3-binary.patch.
+  * Build with pybuild's pyproject plugin.
+  * Patch: Add support for virtualenv > 20.16, which now uses stdlib pathlib.
+  * Bump copyright.
+  * Bump Standards-Version to 4.6.1, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 09 Aug 2022 13:44:11 +0200
+
+xonsh (0.12.4+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Restrict Python < 3.10 from attempting to byte-compile
+    xonsh/parsers/v310.py, which uses the new match keyword.
+    (Closes: #1010742)
+  * Patch: Revert pytest 8 support, incompatible with pytest 6.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 09 May 2022 14:28:10 -0400
+
+xonsh (0.12.2+dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * Bump dependencies on python3-prompt-toolkit to >= 3.0.29, as we are
+    depending on create_pipe_input being a context manager. (#1010198)
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 09 May 2022 07:37:50 -0400
+
+xonsh (0.12.2+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * Set XONSH_DATA_DIR to a temporary directory while building sphinx docs.
+    Fixes FTBFS when $HOME is not writeable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 08 May 2022 09:52:44 -0400
+
+xonsh (0.12.2+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release. (Closes: #1010198)
+  * Refresh patches.
+  * Drop patches, superseded upstream:
+    - 0005-fix-docs-build-fail-on-tracer-calls-without-spec.patch
+    - test-pipelines-import.patch
+  * Build-Depends on python3-myst-parser for docs.
+  * Build-Depend and autopkgtest Depend on python3-virtualenv.
+  * Build the docs within the source tree, as upstream's jinja extension
+    expects (otherwise envvars.rst.out can't be located).
+  * Tell dh_sphinxdoc to ignore envvars.rst.jinja2.html, the HTML file is
+    called envvars.html.
+  * Call dh_python3-ply and Depend on ${python3-ply:Depends}.
+  * Patch: expect the system python to be called "python3", not "python".
+  * Patch: Skip tests that require pytest-subprocess.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 08 May 2022 07:57:59 -0400
+
+xonsh (0.11.0+dfsg-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository, Repository-Browse.
+  * Update standards version to 4.5.1, no changes needed.
+  * Remove constraints unnecessary since buster
+
+  [ Gordon Ball ]
+  * New upstream version 0.11.0+dfsg
+  * Backport #4559 to fix errors building documentation
+  * Add test-depends on python3-pyte, python3-pytest-mock
+  * Skip tests marked flaky upstream
+
+ -- Gordon Ball <gordon@chronitis.net>  Tue, 23 Nov 2021 19:28:41 +0000
+
+xonsh (0.10.1+dfsg-1) unstable; urgency=medium
+
+  * d/watch: new github tarball URL
+  * New upstream version 0.10.1+dfsg
+  * Rebase patches, drop vendored ptk and 0.9.25 changlog patches
+  * Update test dependencies, exclusions
+  * d/copyright: remove vended_ptk from files-excluded; no longer included
+    upstream
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 16 Aug 2021 17:42:34 +0000
+
+xonsh (0.9.25+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.25+dfsg
+  * d/control: debhelper compat 13
+  * d/control: add python3-pyperclip to suggests
+  * Patch import error in test_pipelines
+  * Patch missing upstream changelog for 0.9.25
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 01 Feb 2021 19:17:39 +0000
+
+xonsh (0.9.24+dfsg-4) unstable; urgency=medium
+
+  * Version pytest dependency for autopkgtest
+
+ -- Gordon Ball <gordon@chronitis.net>  Sun, 17 Jan 2021 23:10:46 +0000
+
+xonsh (0.9.24+dfsg-3) unstable; urgency=medium
+
+  * Drop patch pytest-4-support now pytest 6 is available (Closes: #979291)
+
+ -- Gordon Ball <gordon@chronitis.net>  Tue, 05 Jan 2021 19:22:47 +0000
+
+xonsh (0.9.24+dfsg-2) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints. + xonsh-doc: Add Multi-Arch: foreign.
+
+  [ Gordon Ball ]
+  * Build for, and depend upon, only the current python3 version, since the
+    generated parser table is version-specific.
+  * Temporarily drop test_parser on python3.9, since the xonsh parser is still
+    tested against python3.8
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 20 Nov 2020 16:37:22 +0000
+
+xonsh (0.9.24+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.24+dfsg
+  * Rebase patches
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 24 Oct 2020 19:21:18 +0000
+
+xonsh (0.9.23+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.23+dfsg
+  * Refresh patches
+  * Drop retired uploader barry@debian.org. Thank you for your contributions!
+    (Closes: #970189)
+  * Install jupyter kernel in d/rules, since setup.py no longer automates it
+  * Update versioned dependency on prompt-toolkit to 3.0.7 (Closes: #972121)
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 15 Oct 2020 10:31:23 +0000
+
+xonsh (0.9.22+dfsg-1) unstable; urgency=medium
+
+  [ Gordon Ball ]
+  * New upstream version 0.9.22+dfsg
+  * Drop unnecessary dependency on python3-venv (Closes: #970807)
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 24 Sep 2020 18:46:48 +0000
+
+xonsh (0.9.20+dfsg-1) unstable; urgency=medium
+
+  * Exclude xonsh/vended_ptk in preparation for 0.9.20
+  * New upstream version 0.9.20+dfsg
+  * Refresh patches, patch references to vendored prompt-toolkit
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 31 Aug 2020 15:30:12 +0000
+
+xonsh (0.9.19+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.19+dfsg
+  * Patch upstream changes removing support for pytest < 5
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 10 Aug 2020 19:02:26 +0000
+
+xonsh (0.9.18+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.18+dfsg
+  * Depend upon prompt-toolkit >= 2. This version drops support for
+    prompt-toolkit 1.
+
+ -- Gordon Ball <gordon@chronitis.net>  Wed, 06 May 2020 19:39:44 +0000
+
+xonsh (0.9.17+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.17+dfsg
+  * Patch out runthis sphinx extension in documentation
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 24 Apr 2020 19:14:16 +0000
+
+xonsh (0.9.15+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.15+dfsg
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 20 Mar 2020 07:44:27 +0000
+
+xonsh (0.9.14+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.14+dfsg
+  * Drop backport of xonsh#3384 (from this upstream version)
+  * Exclude the new xonsh webconfig tool, added in this version: unfortunately
+    this requires elm to build, which is not available in main. For now the
+    config banner will still refer to the old CLI wizard.
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 02 Mar 2020 20:16:27 +0000
+
+xonsh (0.9.13+dfsg-2) unstable; urgency=medium
+
+  * Backport upstream PR xonsh#3384 for python3.8 support (closes: #950212)
+  * Update to Standards-Version 4.5.0
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 31 Jan 2020 12:21:28 +0000
+
+xonsh (0.9.13+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.13+dfsg
+  * Update to Standards-Version 4.4.1
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 01 Nov 2019 20:58:21 +0000
+
+xonsh (0.9.11+dfsg-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Gordon Ball ]
+  * New upstream release
+  * Refresh patches
+  * Upgrade to debhelper compat level 12
+
+ -- Gordon Ball <gordon@chronitis.net>  Wed, 25 Sep 2019 21:03:51 +0000
+
+xonsh (0.9.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 0.9.8+dfsg
+  * Refresh patches
+  * Update to Standards-Version 4.4.0
+
+ -- Gordon Ball <gordon@chronitis.net>  Tue, 09 Jul 2019 19:08:18 +0000
+
+xonsh (0.8.10+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Wed, 13 Feb 2019 20:31:36 +0000
+
+xonsh (0.8.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update to Standards-Version 4.3.0
+  * Set Rules-Requires-Root: no
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 31 Jan 2019 16:41:10 +0000
+
+xonsh (0.8.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+  * Add git as a dependency for tests, used as an example command in
+    several places
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 02 Nov 2018 19:52:45 +0000
+
+xonsh (0.8.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 11 Oct 2018 07:56:16 +0000
+
+xonsh (0.7.7+dfsg-1) unstable; urgency=medium
+
+  [ Gordon Ball ]
+  * New upstream release
+  * Update to standards-version 4.2.1
+  * Install upstream's xonsh-cat script to /usr/share/xonsh instead of
+    /usr/bin; it shouldn't be needed when cat is available
+  * Use https for the homepage link
+
+  [ Ondřej Nový ]
+  * Use 'python3 -m sphinx' instead of sphinx-build for building docs
+
+ -- Gordon Ball <gordon@chronitis.net>  Wed, 12 Sep 2018 09:40:02 +0000
+
+xonsh (0.6.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update to standards-version 4.1.5
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 06 Jul 2018 11:01:59 +0000
+
+xonsh (0.6.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Move packaging repository to salsa (and DPMT), and update VCS URLs
+  * Add DPMT team as maintainer, move existing maintainers to uploaders
+  * Update to debhelper compat 11
+  * Remove X-Python3-Version >= 3.4 (no longer needed)
+
+ -- Gordon Ball <gordon@chronitis.net>  Sun, 06 May 2018 14:50:24 +0000
+
+xonsh (0.6.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update to standards-version 4.1.4
+
+ -- Gordon Ball <gordon@chronitis.net>  Sun, 22 Apr 2018 11:35:23 +0000
+
+xonsh (0.6.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update to standards-version 4.1.1
+  * Retire manpage-spelling.patch; fixed upstream
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 25 Nov 2017 15:20:53 +0000
+
+xonsh (0.5.12+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update to standards-version 4.0.0
+  * Update years and use https URL in d/copyright
+  * Set C.UTF-8 for the entire build instead of just the documentation
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 23 Jun 2017 11:05:48 +0200
+
+xonsh (0.5.10+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 25 May 2017 23:25:18 +0200
+
+xonsh (0.5.9+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 18 Mar 2017 15:49:16 +0100
+
+xonsh (0.5.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Sun, 12 Mar 2017 22:56:02 +0100
+
+xonsh (0.5.7+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 03 Mar 2017 20:14:42 +0100
+
+xonsh (0.5.6+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 23 Feb 2017 19:59:59 +0100
+
+xonsh (0.5.5+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * d/patches/manpage-spelling.patch: Fix misspellings in help and manpage
+
+ -- Gordon Ball <gordon@chronitis.net>  Sun, 19 Feb 2017 16:46:24 +0100
+
+xonsh (0.5.3+dfsg-2) unstable; urgency=medium
+
+  * Update the short description to match the one used by upstream:
+    "Python-powered, cross-platform, Unix-gazing shell"
+  * Support the <nodoc> build profile
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 04 Feb 2017 17:47:51 +0100
+
+xonsh (0.5.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Re-enable building documentation with cloud-sptheme, and version the
+    build-dependency
+  * Update docs-no-imgmath.patch to also fix URL and privacy (external font)
+    issues, rename to documentation-fixes.patch
+  * Remove unnecessary dependency on python3-pkg-resources
+  * Backgrounding fixed upstream (closes: #851841)
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 03 Feb 2017 21:38:17 +0100
+
+xonsh (0.5.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.5.2
+  * d/patches/jupyter-install-root.patch: retired, fixed upstream
+  * Documentation now registered with doc-base
+  * Autopkgtests explicitly set C.UTF-8 locale
+  * Replace ADTTMP with AUTOPKGTEST_TMP in autopkgtests
+  * Use sphinxdoc:Built-Using for xonsh-doc
+  * Test for pty availablility during autopkgtests
+  * Updated d/compat to 10
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 09 Jan 2017 17:07:02 +0100
+
+xonsh (0.4.7+dfsg-2) unstable; urgency=medium
+
+  * Build-depend on jupyter-client to install xonsh's built-in jupyter kernel.
+  * d/patches/jupyter-install-root.patch: fix the installer for the jupyter
+    kernel not using the buildroot path.
+  * d/patches/elide-cloud-sptheme.patch: build documentation without
+    cloud-sptheme, due to RC bugs (closes: #844754)
+  * d/patches/docs-no-imgmath.patch: this previously also removed an
+    unsupported style parameter, irrelevant when not using the cloud theme
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 12 Dec 2016 12:10:21 -0500
+
+xonsh (0.4.7+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.4.7
+  * d/rules: Explicitly set locale to C.UTF-8 in to prevent a sphinx error.
+
+ -- Gordon Ball <gordon@chronitis.net>  Sun, 02 Oct 2016 11:23:31 +0200
+
+xonsh (0.4.6+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.4.6
+  * d/patches/backport-1603.patch: retired, fixed upstream
+  * d/patches/fix-winapi-docs.patch: retired, fixed upstream
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 02 Sep 2016 13:53:59 +0200
+
+xonsh (0.4.5+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.4.5
+  * d/patches/backport-1603.patch: PLY parser_table now included in the
+    package, avoiding it needing to be re-generated on each start, which
+    should speed up startup. The requisite patch is backported from
+    xonsh#1603. (closes: #834948)
+
+ -- Gordon Ball <gordon@chronitis.net>  Tue, 23 Aug 2016 22:02:05 +0200
+
+xonsh (0.4.4+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.4.4
+  * Added a patch to solve a build failure caused by trying to import _winapi
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 28 Jul 2016 14:26:58 +0200
+
+xonsh (0.4.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.4.3
+  * Tests now use pytest instead of nose
+  * Upstream provides a sh wrapper (xon.sh) which may be useful for invoking
+    xonsh in some circumstances. For now this is in /usr/share/xonsh rather
+    than /usr/bin.
+  * The upstream git repository is now github.com/xonsh/xonsh, update the
+    d/watch file accordingly.
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 01 Jul 2016 14:16:50 +0200
+
+xonsh (0.3.4+dfsg-1) unstable; urgency=medium
+
+  * New upstream release: 0.3.4
+
+ -- Gordon Ball <gordon@chronitis.net>  Thu, 09 Jun 2016 23:01:41 +0200
+
+xonsh (0.3.3+dfsg-1) unstable; urgency=medium
+
+  * Initial release (closes: #825112)
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 06 Jun 2016 21:38:36 +0200

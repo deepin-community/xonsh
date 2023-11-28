@@ -1,0 +1,15 @@
+#!/bin/sh
+
+export HOME=$AUTOPKGTEST_TMP
+export LC_ALL=C.UTF-8
+
+/usr/bin/xonsh -c "1+1"
+/usr/bin/xonsh -c "import sys; print(sys.version)"
+/usr/bin/xonsh -c '"HOME" in ${...}'
+/usr/bin/xonsh -c '!(/bin/false).returncode == 1'
+if python3 -c "import pty; pty.openpty()" > /dev/null 2>&1; then
+    /usr/bin/xonsh -c 'echo $HOME'
+    /usr/bin/xonsh -c "echo @([i*i for i in range(3)])"
+else
+    echo PTY unavailable, not running subshell examples
+fi

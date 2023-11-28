@@ -1,0 +1,9 @@
+Document: xonsh-doc
+Title: Xonsh Documentation
+Author: Xonsh Development Team
+Abstract: Sphinx documentation for Xonsh
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/xonsh-doc/html/index.html
+Files: /usr/share/doc/xonsh-doc/html/*

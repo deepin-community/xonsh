@@ -1,0 +1,45 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Mon, 9 May 2022 14:23:23 -0400
+Subject: Revert pytest v8 support
+
+Debian doesn't have v7, yet and this change isn't compatible with v6.
+
+Origin: revert of upstream https://github.com/xonsh/xonsh/pull/4791
+---
+ xonsh/pytest/plugin.py | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/xonsh/pytest/plugin.py b/xonsh/pytest/plugin.py
+index 281050a..93a6958 100644
+--- a/xonsh/pytest/plugin.py
++++ b/xonsh/pytest/plugin.py
+@@ -56,15 +55,15 @@ def _limited_traceback(excinfo):
+         return format_list(tb)
+ 
+ 
+-def pytest_collect_file(file_path: Path, path, parent):
+-    if file_path.suffix.lower() == ".xsh" and file_path.name.startswith("test_"):
+-        return XshFile.from_parent(parent, path=file_path)
++def pytest_collect_file(parent, path):
++    if path.ext.lower() == ".xsh" and path.basename.startswith("test_"):
++        return XshFile.from_parent(parent, fspath=path)
+ 
+ 
+ class XshFile(pytest.File):
+     def collect(self):
+-        sys.path.append(str(self.path.parent))
+-        mod = importlib.import_module(self.path.stem)
++        sys.path.append(self.fspath.dirname)
++        mod = importlib.import_module(self.fspath.purebasename)
+         sys.path.pop(0)
+         tests = [t for t in dir(mod) if t.startswith("test_")]
+         for test_name in tests:
+@@ -92,7 +91,7 @@ class XshFunction(pytest.Item):
+         return "".join(formatted_tb)
+ 
+     def reportinfo(self):
+-        return self.path, 0, f"xonsh test: {self.name}"
++        return self.fspath, 0, f"xonsh test: {self.name}"
+ 
+ 
+ @pytest.fixture

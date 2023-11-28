@@ -1,4 +1,36 @@
-#!/usr/bin/make -f
+#! /usr/bin/make -f
+
+export LC_ALL=C.UTF-8
 
 %:
-	dh $@
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_installchangelogs:
+	dh_installchangelogs -k CHANGELOG.rst
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f xonsh/lexer_table.py xonsh/parser_table.py
+	rm -rf docs/_build
+	find . -name '*.pyc' -delete
+
+override_dh_sphinxdoc:
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
+	$(MAKE) -C docs html PYTHONPATH=$(CURDIR) http_proxy='127.0.0.1:9' XONSH_DATA_DIR=$(CURDIR)/docs/_build/xonsh-data-dir
+	mv docs/_build/html debian/xonsh-doc/usr/share/doc/xonsh-doc/
+	dh_sphinxdoc -O--buildsystem=pybuild --exclude=envvars.rst.jinja2.html
+endif
+
+override_dh_auto_install:
+	dh_auto_install
+	PYTHONPATH=. help2man --name "Pythonish, BASHwards looking shell" \
+	         --no-info --include debian/xonsh.help2man -o debian/xonsh.1 \
+	         ./debian/tmp/usr/bin/xonsh
+	mkdir -p debian/tmp/usr/share/xonsh/
+	mv debian/tmp/usr/bin/xonsh-* debian/tmp/usr/share/xonsh/
+	# install the jupyter kernel (no longer automatically handled by setup.py)
+	mkdir -p debian/tmp/usr/share/jupyter/kernels/xonsh
+	echo '{"argv": ["/usr/bin/python3", "-m", "xonsh.jupyter_kernel", "-f", "{connection_file}"], "display_name": "Xonsh", "language": "xonsh", "codemirror_mode": "shell"}' > debian/tmp/usr/share/jupyter/kernels/xonsh/kernel.json
+
+execute_before_dh_python3:
+	dh_python3-ply xonsh/completion_parser_table.py xonsh/parser_table.py

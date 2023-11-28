@@ -1,0 +1,10 @@
+xonsh (0.6.3+dfsg-1) unstable; urgency=medium
+
+    As of version 0.6.2, static configuration files
+    (XDG_CONFIG_HOME/xonsh/config.json) have been deprecated, and executable
+    xonshrc files are now the only supported config mechanism.
+
+    The default search path for xonshrc files is /etc/xonshrc,
+    XDG_CONFIG_HOME/xonsh/rc.xsh, ~/.xonshrc
+
+ -- Gordon Ball <gordon@chronitis.net>  Wed, 02 May 2018 07:55:33 +0000
