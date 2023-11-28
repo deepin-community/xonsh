@@ -1,0 +1,17 @@
+The upstream (github) tag tarball is used instead of the pypi one, since the
+latter omits the test suite and changelog.
+
+The source is repacked to remove:
+
+ * a vendored copy of the PLY library
+ * a compressed copy of the yes(1) manpage (used for a test)
+ * images and video without source in the documentation
+ * .gitignore (since it interferes with git-buildpackage)
+ * xonsh/webconfig; an embedded webapp for configuration written in elm and
+   vendored copy of bootstrap (elm is not available to build the webapp at
+   the time of writing).
+
+After 0.5, xonsh requires access to the pty device for any operations with
+subshells. This can be a problem in build/test chroots (see #817236). The
+autopkgtest scripts test whether they can open a pty and avoid some tests
+as appropriate.

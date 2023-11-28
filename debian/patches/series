@@ -1,0 +1,6 @@
+unvendor-ply.patch
+documentation-fixes.patch
+drop-webconfig.patch
+0006-Skip-tests-marked-flaky-upstream.patch
+skip-pytest-subprocess.patch
+revert-pytest-8.patch

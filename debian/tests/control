@@ -1,0 +1,14 @@
+Tests: pytest
+Depends: bash,
+         git,
+         python3-prompt-toolkit (>= 3.0.29~),
+         python3-pygments,
+         python3-pyte,
+         python3-pytest (>= 6),
+         python3-pytest-mock,
+         python3-virtualenv,
+         @,
+Restrictions: allow-stderr
+
+Tests: xonsh
+Depends: @,

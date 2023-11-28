@@ -1,0 +1,131 @@
+From: Gordon Ball <gordon@chronitis.net>
+Date: Wed, 19 Jun 2019 18:56:33 +0000
+Subject: upstream includes vendored ply, which is removed when repacking
+
+but still listed in setup
+Author: Gordon Ball <gordon@chronitis.net>
+---
+ pyproject.toml                      | 1 -
+ tests/test_lexer.py                 | 3 ++-
+ xonsh/lexer.py                      | 3 ++-
+ xonsh/parsers/base.py               | 3 ++-
+ xonsh/parsers/completion_context.py | 3 ++-
+ xonsh/parsers/v310.py               | 2 +-
+ xonsh/xonfig.py                     | 3 ++-
+ 7 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 87f1ed6..e373e03 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -23,7 +23,6 @@ readme = {file = ["README.rst"]}
+ [tool.setuptools]
+ packages = [
+     "xonsh",
+-    "xonsh.ply.ply",
+     "xonsh.ptk_shell",
+     "xonsh.procs",
+     "xonsh.parsers",
+diff --git a/tests/test_lexer.py b/tests/test_lexer.py
+index 4c6b456..f622c6e 100644
+--- a/tests/test_lexer.py
++++ b/tests/test_lexer.py
+@@ -8,8 +8,9 @@ from pprint import pformat
+ 
+ import pytest
+ 
++from ply.lex import LexToken
++
+ from xonsh.lexer import Lexer
+-from xonsh.ply.ply.lex import LexToken
+ 
+ LEXER_ARGS = {"lextab": "lexer_test_table", "debug": 0}
+ 
+diff --git a/xonsh/lexer.py b/xonsh/lexer.py
+index 4510a8a..8c61ecf 100644
+--- a/xonsh/lexer.py
++++ b/xonsh/lexer.py
+@@ -9,9 +9,10 @@ import keyword as kwmod
+ import re
+ import typing as tp
+ 
++from ply.lex import LexToken
++
+ from xonsh.lazyasd import lazyobject
+ from xonsh.platform import PYTHON_VERSION_INFO
+-from xonsh.ply.ply.lex import LexToken
+ from xonsh.tokenize import (
+     CASE,
+     COMMENT,
+diff --git a/xonsh/parsers/base.py b/xonsh/parsers/base.py
+index 2d6fda5..af87fb8 100644
+--- a/xonsh/parsers/base.py
++++ b/xonsh/parsers/base.py
+@@ -8,6 +8,8 @@ from ast import parse as pyparse
+ from collections.abc import Iterable, Mapping, Sequence
+ from threading import Thread
+ 
++from ply import yacc
++
+ from xonsh import ast
+ from xonsh.ast import has_elts, load_attribute_chain, xonsh_call
+ from xonsh.lazyasd import LazyObject
+@@ -15,7 +17,6 @@ from xonsh.lexer import Lexer, LexToken
+ from xonsh.parsers.context_check import check_contexts
+ from xonsh.parsers.fstring_adaptor import FStringAdaptor
+ from xonsh.platform import PYTHON_VERSION_INFO
+-from xonsh.ply.ply import yacc
+ from xonsh.tokenize import SearchPath, StringPrefix
+ 
+ RE_SEARCHPATH = LazyObject(lambda: re.compile(SearchPath), globals(), "RE_SEARCHPATH")
+diff --git a/xonsh/parsers/completion_context.py b/xonsh/parsers/completion_context.py
+index aaed9cd..829df4e 100644
+--- a/xonsh/parsers/completion_context.py
++++ b/xonsh/parsers/completion_context.py
+@@ -16,10 +16,11 @@ from typing import (
+     overload,
+ )
+ 
++from ply import yacc
++
+ from xonsh.lazyasd import lazyobject
+ from xonsh.lexer import Lexer
+ from xonsh.parsers.base import Location, raise_parse_error
+-from xonsh.ply.ply import yacc
+ from xonsh.tools import check_for_partial_string, get_line_continuation
+ 
+ 
+diff --git a/xonsh/parsers/v310.py b/xonsh/parsers/v310.py
+index eabdd3e..20d5a35 100644
+--- a/xonsh/parsers/v310.py
++++ b/xonsh/parsers/v310.py
+@@ -11,7 +11,7 @@ handle
+ import ast
+ 
+ from xonsh.parsers.v39 import Parser as ThreeNineParser
+-from xonsh.ply.ply import yacc
++from ply import yacc
+ 
+ 
+ class Parser(ThreeNineParser):
+diff --git a/xonsh/xonfig.py b/xonsh/xonfig.py
+index 9d011a2..478fb17 100644
+--- a/xonsh/xonfig.py
++++ b/xonsh/xonfig.py
+@@ -12,6 +12,8 @@ import shutil
+ import textwrap
+ import typing as tp
+ 
++import ply
++
+ import xonsh.wizard as wiz
+ from xonsh import __version__ as XONSH_VERSION
+ from xonsh.built_ins import XSH
+@@ -36,7 +38,6 @@ from xonsh.platform import (
+     ptk_version,
+     pygments_version,
+ )
+-from xonsh.ply import ply
+ from xonsh.prompt.base import is_template_string
+ from xonsh.tools import (
+     color_style,

@@ -1,0 +1,38 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Sun, 8 May 2022 07:52:36 -0400
+Subject: pytest-subprocess not avilable in Debian
+
+Skip tests that require it.
+---
+ tests/prompt/test_gitstatus.py | 5 +++++
+ tests/prompt/test_vc.py        | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/tests/prompt/test_gitstatus.py b/tests/prompt/test_gitstatus.py
+index 72e780d..33cb631 100644
+--- a/tests/prompt/test_gitstatus.py
++++ b/tests/prompt/test_gitstatus.py
+@@ -19,6 +19,11 @@ def prompts(xession):
+     fields.reset()
+ 
+ 
++@pytest.fixture
++def fake_process():
++    pytest.skip("pytest-subprocess not avilable in Debian")
++
++
+ @pytest.fixture
+ def fake_proc(fake_process):
+     def wrap(map: "dict"):
+diff --git a/tests/prompt/test_vc.py b/tests/prompt/test_vc.py
+index c33ee67..3d4ba57 100644
+--- a/tests/prompt/test_vc.py
++++ b/tests/prompt/test_vc.py
+@@ -152,6 +152,7 @@ def test_dirty_working_directory(repo, set_xenv):
+     assert getattr(vc, get_dwd)()
+ 
+ 
++@pytest.mark.skip("pytest-subprocess not avilable in Debian")
+ @pytest.mark.parametrize("include_untracked", [True, False])
+ def test_git_dirty_working_directory_includes_untracked(
+     xession, fake_process, include_untracked

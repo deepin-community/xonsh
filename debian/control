@@ -1,15 +1,58 @@
-Source: template-repository
-Section: unknown
+Source: xonsh
+Section: shells
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Standards-Version: 4.6.1
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Gordon Ball <gordon@chronitis.net>,
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               help2man,
+               pybuild-plugin-pyproject,
+               python3,
+               python3-cloud-sptheme <!nodoc>,
+               python3-docutils,
+               python3-jupyter-client,
+               python3-myst-parser <!nodoc>,
+               python3-numpydoc <!nodoc>,
+               python3-ply,
+               python3-setuptools (>= 61),
+               python3-sphinx <!nodoc>,
+               python3-virtualenv,
+Vcs-Git: https://salsa.debian.org/python-team/packages/xonsh.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/xonsh
+Homepage: https://xon.sh/
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: xonsh
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         ${python3-ply:Depends},
+Recommends: python3-prompt-toolkit (>= 3.0.29~),
+            python3-pygments,
+            python3-setproctitle,
+Suggests: python3-pyperclip,
+          xonsh-doc,
+Description: Python-powered, cross-platform, Unix-gazing shell
+ Xonsh is a Python-ish shell language and command prompt. Unlike other shells,
+ xonsh is based on Python, with additional syntax added that makes calling
+ subprocess commands, manipulating the environment, and dealing with the file
+ system easy. Xonsh supports all normal Python constructs and a subset of
+ those available in bash.
+
+Package: xonsh-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends},
+         ${sphinxdoc:Depends},
+Built-Using: ${sphinxdoc:Built-Using},
+Build-Profiles: <!nodoc>
+Multi-Arch: foreign
+Description: Python-powered, cross-platform, Unix-gazing shell (documentation)
+ Xonsh is a Python-ish shell language and command prompt. Unlike other shells,
+ xonsh is based on Python, with additional syntax added that makes calling
+ subprocess commands, manipulating the environment, and dealing with the file
+ system easy. Xonsh supports all normal Python constructs and a subset of
+ those available in bash.
+ .
+ This package contains the documentation.

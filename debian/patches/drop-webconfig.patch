@@ -1,0 +1,149 @@
+From: Gordon Ball <gordon@chronitis.net>
+Date: Mon, 2 Mar 2020 09:17:25 +0000
+Subject: Patch out references to webconfig
+
+Xonsh 0.9.14 added a webconfig app which was intended to replace the
+existing CLI wizard. Unfortunately, this requires elm to build the
+webapp which is not currently available in main. The webconfig source
+has been dropped in Files-Excluded, this patch drops references to it
+and reverts the xonfig banner to refer to the old wizard.
+---
+ pyproject.toml       |  9 ---------
+ tests/test_xonfig.py | 30 ------------------------------
+ xonsh/xonfig.py      | 20 +-------------------
+ 3 files changed, 1 insertion(+), 58 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index e373e03..97edacc 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -33,7 +33,6 @@ packages = [
+     "xonsh.prompt",
+     "xonsh.pytest",
+     "xonsh.lib",
+-    "xonsh.webconfig",
+     "xonsh.virtualenv",
+     "xompletions",
+ ]
+@@ -45,7 +44,6 @@ xonsh = "xonsh"
+ xontrib = "xontrib"
+ xompletions = "xompletions"
+ "xonsh.lib" = "xonsh/lib"
+-"xonsh.webconfig" = "xonsh/webconfig"
+ 
+ [tool.setuptools.package-data]
+ xonsh = [
+@@ -55,13 +53,6 @@ xonsh = [
+ xontrib = ["*.xsh"]
+ "xonsh.lib" = ["*.xsh"]
+ "xonsh.virtualenv" = ["*.xsh"]
+-"xonsh.webconfig" = [
+-    "*.html",
+-    "js/app.min.js",
+-    "js/bootstrap.min.css",
+-    "js/LICENSE-bootstrap",
+-    "js/xonsh_sticker_mini.png",
+-]
+ 
+ [project.entry-points]
+ pytest11 = { xonsh = "xonsh.pytest.plugin" }
+diff --git a/tests/test_xonfig.py b/tests/test_xonfig.py
+index 1704a40..946ed50 100644
+--- a/tests/test_xonfig.py
++++ b/tests/test_xonfig.py
+@@ -10,7 +10,6 @@ import re
+ 
+ import pytest  # noqa F401
+ 
+-from xonsh.webconfig import main as web_main
+ from xonsh.xonfig import xonfig_main
+ 
+ 
+@@ -27,7 +26,6 @@ def test_xonfg_help(capsys, xession):
+         "info",
+         "styles",
+         "wizard",
+-        "web",
+         "colors",
+         "tutorial",
+     }
+@@ -64,34 +62,6 @@ def request_factory():
+     return MockRequest
+ 
+ 
+-@pytest.fixture
+-def get_req(request_factory):
+-    from urllib import parse
+-
+-    def factory(path, data: "dict[str, str]|None" = None):
+-        if data:
+-            path = path + "?" + parse.urlencode(data)
+-        request = request_factory(path, "get")
+-        handle = web_main.XonshConfigHTTPRequestHandler(request, (0, 0), None)
+-        return request, handle, request.data.decode()
+-
+-    return factory
+-
+-
+-class TestXonfigWeb:
+-    def test_colors_get(self, get_req):
+-        _, _, resp = get_req("/")
+-        assert "Colors" in resp
+-
+-    def test_xontribs_get(self, get_req):
+-        _, _, resp = get_req("/xontribs")
+-        assert "Xontribs" in resp
+-
+-    def test_prompts_get(self, get_req):
+-        _, _, resp = get_req("/prompts")
+-        assert "Prompts" in resp
+-
+-
+ @pytest.mark.parametrize(
+     "args",
+     [
+diff --git a/xonsh/xonfig.py b/xonsh/xonfig.py
+index 478fb17..9e566a3 100644
+--- a/xonsh/xonfig.py
++++ b/xonsh/xonfig.py
+@@ -679,23 +679,6 @@ def _tutorial():
+     webbrowser.open("http://xon.sh/tutorial.html")
+ 
+ 
+-def _web(
+-    _args,
+-    browser=True,
+-):
+-    """Launch configurator in browser.
+-
+-    Parameters
+-    ----------
+-    browser : --nb, --no-browser, -n
+-        don't open browser
+-    """
+-
+-    from xonsh.webconfig import main
+-
+-    main.main(_args[1:])
+-
+-
+ class XonfigAlias(ArgParserAlias):
+     """Manage xonsh configuration."""
+ 
+@@ -711,7 +694,6 @@ class XonfigAlias(ArgParserAlias):
+         # register as default action
+         add_args(parser, _info, allowed_params=())
+         parser.add_command(_info)
+-        parser.add_command(_web)
+         parser.add_command(_wizard)
+         parser.add_command(_styles)
+         parser.add_command(_colors)
+@@ -797,7 +779,7 @@ WELCOME_MSG = [
+     ),
+     "",
+     "{{INTENSE_BLACK}}Start from commands:",
+-    "  {{GREEN}}xonfig{{RESET}} web         {{INTENSE_BLACK}}# Run the configuration tool in the browser to create ~/.xonshrc {{RESET}}",
++    "  {{GREEN}}xonfig{{RESET}} wizard      {{INTENSE_BLACK}}# Run the configuration wizard to create ~/.xonshrc {{RESET}}",
+     "  {{GREEN}}xonfig{{RESET}} tutorial    {{INTENSE_BLACK}}# Open the xonsh tutorial in the browser{{RESET}}",
+     "[SHELL_TYPE_WARNING]",
+     "",

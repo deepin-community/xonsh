@@ -1,0 +1,40 @@
+From: Gordon Ball <gordon@chronitis.net>
+Date: Wed, 19 Jun 2019 18:56:33 +0000
+Subject: Fix documentation issues
+
+Removes the imgmath extension, (there appear to be no `.. math`
+fields in the docs), removes the overwrite template which rewrites all
+links to point to http://xon.sh/, removes the furo template (unpackage),
+and disables the (unpackaged) runthis extension.
+---
+ docs/conf.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/docs/conf.py b/docs/conf.py
+index 9abb83c..5d75f0f 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -53,14 +53,12 @@ on_rtd = os.environ.get("READTHEDOCS", None) == "True"
+ extensions = [
+     "sphinx.ext.autodoc",
+     "sphinx.ext.doctest",
+-    "sphinx.ext.imgmath",
+     "sphinx.ext.inheritance_diagram",
+     "sphinx.ext.viewcode",
+     "sphinx.ext.duration",
+     "sphinx.ext.autosummary",
+     "numpydoc",
+     "extensions.cmdhelp",
+-    "runthis.sphinxext",
+     "extensions.jinja_rst_ext",
+     "myst_parser",  # *.md - https://myst-parser.readthedocs.io/
+ ]
+@@ -154,7 +152,7 @@ modindex_common_prefix = ["xonsh."]
+ # Theme options are theme-specific and customize the look and feel of a theme
+ # further.  For a list of options available for each theme, see the
+ # documentation.
+-if not on_rtd:
++if False and not on_rtd:
+ 
+     html_theme = "furo"
+ 

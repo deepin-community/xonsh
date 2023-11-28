@@ -1,0 +1,21 @@
+#!/bin/sh
+
+export LC_ALL=C.UTF-8
+export HOME=$AUTOPKGTEST_TMP
+
+# include xon.sh, which is used by test_integration
+export PATH=/usr/share/xonsh:$PATH
+
+touch $HOME/testfile
+cp -r tests $AUTOPKGTEST_TMP
+cd $AUTOPKGTEST_TMP
+
+TESTARGS="--ignore tests/test_man.py --ignore tests/test_news.py --ignore tests/test_integrations.py --ignore tests/test_ptk_highlight.py --ignore tests/test_main.py --ignore tests/test_vox.py --ignore tests/test_parser.py --ignore tests/completers/test_bash_completer.py --ignore tests/completers/test_pip_completer.py --ignore tests/prompt/test_gitstatus.py --ignore tests/prompt/test_vc.py"
+if python3 -c "import pty; pty.openpty()" > /dev/null 2>&1; then
+    echo PTY available
+else
+    echo PTY unavailable, disabling tests involving subshells
+    TESTARGS="$TESTARGS --ignore tests/test_xonsh.xsh"
+fi
+
+python3 -m pytest $TESTARGS
