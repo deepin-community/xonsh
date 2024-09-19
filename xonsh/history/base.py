@@ -1,4 +1,5 @@
 """Base class of Xonsh History backends."""
+
 import functools
 import re
 import types
@@ -108,8 +109,7 @@ class History:
             ]
         else:
             raise TypeError(
-                "history indices must be integers "
-                "or slices, not {}".format(type(item))
+                "history indices must be integers " f"or slices, not {type(item)}"
             )
 
     def __setitem__(self, *args):

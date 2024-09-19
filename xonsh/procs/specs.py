@@ -1,4 +1,5 @@
 """Subprocess specification and related utilities."""
+
 import contextlib
 import inspect
 import io
@@ -133,7 +134,7 @@ def get_script_subproc_command(fname, args):
 @xl.lazyobject
 def _REDIR_REGEX():
     name = r"(o(?:ut)?|e(?:rr)?|a(?:ll)?|&?\d?)"
-    return re.compile("{r}(>?>|<){r}$".format(r=name))
+    return re.compile(f"{name}(>?>|<){name}$")
 
 
 @xl.lazyobject
@@ -548,6 +549,9 @@ class SubprocSpec:
         if events.exists(event_name):
             event = getattr(events, event_name)
             event.fire(spec=self)
+        if events.exists("on_pre_spec_run"):
+            event = events.on_pre_spec_run
+            event.fire(spec=self)
 
     def _post_run_event_fire(self, name, proc):
         events = XSH.builtins.events
@@ -555,6 +559,9 @@ class SubprocSpec:
         if events.exists(event_name):
             event = getattr(events, event_name)
             event.fire(spec=self, proc=proc)
+        if events.exists("on_post_spec_run"):
+            event = events.on_post_spec_run
+            event.fire(spec=self)
 
     #
     # Building methods

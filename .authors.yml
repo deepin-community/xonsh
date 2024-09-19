@@ -64,7 +64,7 @@
   - Gilbert.Forsyth@capitalone.com
   - gforsyth@gwu.edu
   - gil@forsyth.dev
-  num_commits: 627
+  num_commits: 644
   first_commit: 2015-10-19 16:04:32
   github: gforsyth
 - name: Morten Enemark Lund
@@ -291,7 +291,7 @@
   github: shahinism
 - name: Jason R. Coombs
   email: jaraco@jaraco.com
-  num_commits: 12
+  num_commits: 13
   first_commit: 2018-04-23 15:25:29
   github: jaraco
 - name: torgny
@@ -1135,7 +1135,7 @@
   github: marciomazza
 - name: Noortheen Raja
   email: jnoortheen@gmail.com
-  num_commits: 207
+  num_commits: 208
   first_commit: 2020-03-15 10:13:56
   github: jnoortheen
 - name: Samuel Lotz
@@ -1430,17 +1430,17 @@
   first_commit: 2021-11-18 18:42:29
 - name: doronz88
   email: doron88@gmail.com
-  num_commits: 3
+  num_commits: 5
   first_commit: 2022-04-27 12:41:13
 - name: Stefano Rivera
   email: github@rivera.za.net
   alternate_emails:
   - stefano@rivera.za.net
-  num_commits: 3
+  num_commits: 4
   first_commit: 2022-05-08 00:26:57
 - name: dependabot[bot]
   email: 49699333+dependabot[bot]@users.noreply.github.com
-  num_commits: 4
+  num_commits: 8
   first_commit: 2022-06-08 09:43:32
 - name: jbw3
   email: jbw3@users.noreply.github.com
@@ -1464,7 +1464,7 @@
   first_commit: 2022-06-27 22:21:34
 - name: pre-commit-ci[bot]
   email: 66853113+pre-commit-ci[bot]@users.noreply.github.com
-  num_commits: 30
+  num_commits: 44
   first_commit: 2022-07-11 14:26:34
 - name: jgart
   email: 47760695+jgarte@users.noreply.github.com
@@ -1544,3 +1544,47 @@
   email: cosine_chen@163.com
   num_commits: 1
   first_commit: 2023-07-26 18:44:55
+- name: mgunyho
+  email: 20118130+mgunyho@users.noreply.github.com
+  num_commits: 1
+  first_commit: 2023-09-04 07:37:18
+- name: ShalokShalom
+  email: shalokshalom@protonmail.ch
+  num_commits: 1
+  first_commit: 2023-08-23 11:30:20
+- name: Wilfried Pollan
+  email: gitwipo@users.noreply.github.com
+  num_commits: 1
+  first_commit: 2023-08-22 14:47:47
+- name: Jacqueline Leykam
+  email: me@jacqueline.id.au
+  num_commits: 1
+  first_commit: 2023-11-27 05:12:28
+- name: Joshix-1
+  email: 57299889+Joshix-1@users.noreply.github.com
+  num_commits: 1
+  first_commit: 2023-11-23 06:19:34
+- name: Nathan Monfils
+  email: nathanmonfils@gmail.com
+  num_commits: 1
+  first_commit: 2024-01-15 05:25:23
+- name: JamesParrott
+  email: 80779630+JamesParrott@users.noreply.github.com
+  num_commits: 1
+  first_commit: 2024-01-16 08:56:07
+- name: Airat Makhmutov
+  email: 108220148+rautyrauty@users.noreply.github.com
+  num_commits: 1
+  first_commit: 2023-12-31 10:08:28
+- name: Matthieu LAURENT
+  email: matthieu.laurent69@protonmail.com
+  num_commits: 1
+  first_commit: 2024-01-30 06:24:36
+- name: Daniel Saunders
+  email: dsaunders410@gmail.com
+  num_commits: 1
+  first_commit: 2024-02-27 10:22:12
+- name: Andrew
+  email: andrew222651@fastmail.com
+  num_commits: 1
+  first_commit: 2024-03-06 04:37:19

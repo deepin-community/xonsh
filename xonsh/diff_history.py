@@ -1,4 +1,5 @@
 """Tools for diff'ing two xonsh history files in a meaningful fashion."""
+
 import datetime
 import difflib
 import itertools
@@ -211,15 +212,7 @@ class HistoryDiffer:
         artn = self.a["cmds"][i]["rtn"]
         brtn = self.b["cmds"][j]["rtn"]
         if artn != brtn:
-            s += (
-                "Return vals {red}{artn}{reset} & {green}{brtn}{reset} differ\n"
-            ).format(
-                red=COLORS.RED,
-                green=COLORS.GREEN,
-                reset=COLORS.RESET,
-                artn=artn,
-                brtn=brtn,
-            )
+            s += f"Return vals {COLORS.RED}{artn}{COLORS.RESET} & {COLORS.GREEN}{brtn}{COLORS.RESET} differ\n"
         return s
 
     def _cmd_replace_diff(self, i, ainp, aid, j, binp, bid):

@@ -1,4 +1,5 @@
 """Aliases for the xonsh shell."""
+
 import argparse
 import collections.abc as cabc
 import functools
@@ -85,8 +86,7 @@ class Aliases(cabc.MutableMapping):
     @tp.overload
     def register(
         self, name: str, *, dash_case: bool = True
-    ) -> tp.Callable[[types.FunctionType], types.FunctionType]:
-        ...
+    ) -> tp.Callable[[types.FunctionType], types.FunctionType]: ...
 
     def register(self, func_or_name, name=None, dash_case=True):
         """Decorator to register the given function by name."""
@@ -747,7 +747,7 @@ def xexec_fn(
     except FileNotFoundError as e:
         return (
             None,
-            "xonsh: exec: file not found: {}: {}" "\n".format(e.args[1], command[0]),
+            f"xonsh: exec: file not found: {e.args[1]}: {command[0]}" "\n",
             1,
         )
 
@@ -894,7 +894,7 @@ def make_default_aliases():
             "vol",
         }
         for alias in windows_cmd_aliases:
-            default_aliases[alias] = ["cmd", "/c", alias]
+            default_aliases[alias] = [os.getenv("COMSPEC"), "/c", alias]
         default_aliases["call"] = ["source-cmd"]
         default_aliases["source-bat"] = ["source-cmd"]
         default_aliases["clear"] = "cls"

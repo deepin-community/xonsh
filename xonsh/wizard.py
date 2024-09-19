@@ -1,5 +1,6 @@
 """Tools for creating command-line and web-based wizards from a tree of nodes.
 """
+
 import ast
 import collections.abc as cabc
 import fnmatch
@@ -508,7 +509,7 @@ class PrettyFormatter(Visitor):
         if node.path is None:
             s += "\n])"
         else:
-            s += "{0}],\n{0}path={1!r}\n)".format(self.indent, node.path)
+            s += f"{self.indent}],\n{self.indent}path={node.path!r}\n)"
         return s
 
     def visit_message(self, node):
@@ -829,11 +830,7 @@ class PromptVisitor(StateVisitor):
                 self.state = json.load(f)
             print_color(f"{{GREEN}}{fname!r} loaded.{{RESET}}")
         else:
-            print_color(
-                ("{{RED}}{!r} could not be found, " "continuing.{{RESET}}").format(
-                    fname
-                )
-            )
+            print_color(f"{{RED}}{fname!r} could not be found, " "continuing.{{RESET}}")
         return fname
 
     def visit_fileinserter(self, node):

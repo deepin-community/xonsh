@@ -69,6 +69,8 @@ Projects that use xonsh or compatible
 - `xxh <https://github.com/xxh/xxh>`_: Using xonsh wherever you go through the SSH.
 - `rever <https://regro.github.io/rever-docs/>`_: Cross-platform software release tool.
 - `Regro autotick bot <https://github.com/regro/cf-scripts>`_: Regro Conda-Forge autoticker.
+- `zoxide <https://github.com/ajeetdsouza/zoxide>`_: A smarter cd command.
+- `any-nix-shell <https://github.com/haslersn/any-nix-shell>`_: xonsh support for the ``nix run`` and ``nix-shell`` environments of the Nix package manager.
 
 Jupyter-based interactive notebooks via `xontrib-jupyter <https://github.com/xonsh/xontrib-jupyter>`_:
 
@@ -86,6 +88,7 @@ The xonsh shell is developed by a community of volunteers. There are few ways to
 - Solve a `good first issue <https://github.com/xonsh/xonsh/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22+sort%3Areactions-%2B1-desc>`_.
 - Get the `idea <https://github.com/xonsh/xontrib-template/issues?q=is%3Aopen+is%3Aissue+label%3Aidea+sort%3Areactions-%2B1-desc>`_ and `create new xontrib <https://github.com/xonsh/xontrib-template#why-use-this-template>`_.
 - Become xonsh core by deep diving into xonsh and improve the threading and subprocess logic.
+- Give a star to xonsh repository and to `xontribs <https://github.com/topics/xontrib>`_ you like.
 
 We welcome new contributors!
 

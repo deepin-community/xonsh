@@ -4,6 +4,108 @@ Xonsh Change Log
 
 .. current developments
 
+v0.15.1
+====================
+
+**Fixed:**
+
+* pytest: Fix pytest collection starting at pytest>=8.1.0
+
+**Authors:**
+
+* doronz88
+* Daniel Saunders
+* Andrew
+
+
+
+v0.15.0
+====================
+
+**Added:**
+
+* `Atuin <https://atuin.sh/>`_ now has official support for xonsh. (Related PR: https://github.com/atuinsh/atuin/pull/1375)
+
+**Changed:**
+
+* Updated docs to reflect VS Code support for xonsh as the user's default shell.
+* Pinned prompt-toolkit version 3.0.29-3.0.40 to workaround upstream issue. More info in issue 5241.
+
+**Authors:**
+
+* anki-code
+* pre-commit-ci[bot]
+* Jason R. Coombs
+* dependabot[bot]
+* Matthieu LAURENT
+
+
+
+v0.14.4
+====================
+
+**Added:**
+
+* System clipboard can be fully disabled using ``$XONSH_USE_SYSTEM_CLIPBOARD``.
+
+**Authors:**
+
+* anki-code
+* pre-commit-ci[bot]
+* dependabot[bot]
+* Stefano Rivera
+* Nathan Monfils
+* JamesParrott
+* Airat Makhmutov
+
+
+
+v0.14.3
+====================
+
+**Added:**
+
+* Added ``on_pre_spec_run`` event.
+* Added ``on_post_spec_run`` event.
+
+**Fixed:**
+
+* ``xonsh`` now adds the user site packages directory to ``sys.path`` where
+  required for proper ``xontrib`` discovery
+
+**Authors:**
+
+* Gil Forsyth
+* pre-commit-ci[bot]
+* Jacqueline Leykam
+* Joshix-1
+
+
+
+v0.14.2
+====================
+
+**Fixed:**
+
+* history: fix json file permissions upon `sudo` (#5220)
+* ``cd`` with no arguments will always return to ``$HOME``
+* Correctly parse multi line foreign aliases
+* Upgrade Python version at the introduction (https://github.com/xonsh/xonsh/pull/5193)
+
+**Authors:**
+
+* Gil Forsyth
+* Noortheen Raja
+* anki-code
+* pre-commit-ci[bot]
+* dependabot[bot]
+* doronz88
+* mgunyho
+* ShalokShalom
+* Wilfried Pollan
+
+
+
 v0.14.1
 ====================
 
