@@ -40,6 +40,7 @@ Jean-Benoist Leger <jb@leger.tf> Jean-Benoist Leger <jbleger@hds.utc.fr>
 christopher <cjwright4242@gmail.com>
 Klaus Alexander Seistrup <klaus@seistrup.dk> Klaus Alexander Seistrup <kseistrup@users.noreply.github.com>
 Leonardo Santagada <santagada@gmail.com>
+pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
 Burak Yiğit Kaya <ben@byk.im> Burak Yigit Kaya <ben@byk.im>
 Matthias Bussonnier <bussonniermatthias@gmail.com>
 Aaron Griffin <aig787@gmail.com>
@@ -47,7 +48,6 @@ Rob Brewer <rwb123@gmail.com> Robert W. Brewer <rwb123@gmail.com>
 virus <virusbb001a@gmail.com>
 Sagar Tewari <sagartewari01@gmail.com> Sagar Tewari <sagartewariym@yahoo.com>
 Gordon Ball <gordon@chronitis.net>
-pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
 Eadaen1 <eadaen@protonmail.com>
 Peter Ye <46109467+yaxollum@users.noreply.github.com> Peter Ye <yaxollum@gmail.com>
 Konstantin Molchanov <kmolchanov@machinezone.com> Konstantin Molchanov <moigagoo@live.com>
@@ -69,11 +69,11 @@ Paul Goelz <s8pagoel@stud.uni-saarland.de>
 cryzed <cryzed@googlemail.com>
 Frank Sachsenheim <funkyfuture@riseup.net> Frank Sachsenheim <funkyfuture@users.noreply.github.com>
 Kurtis Rader <krader@skepticism.us>
+Jason R. Coombs <jaraco@jaraco.com>
 Brian Visel <eode@eptitude.net>
 cafehaine <kilian.guillaume@gmail.com>
 Andrew Hundt <ATHundt@gmail.com>
 Jonathan Slenders <jonathan@slenders.be>
-Jason R. Coombs <jaraco@jaraco.com>
 Justin Moen <jamoen7@gmail.com>
 Raphael Das Gupta <raphael.das.gupta@hsr.ch> Raphael Borun Das Gupta <git@raphael.dasgupta.ch>
 Caleb Hattingh <caleb.hattingh@gmail.com>
@@ -87,6 +87,7 @@ Will Wykeham <will@wykeham.net>
 Oleh Prypin <oleh@pryp.in>
 Brian Skinn <brian.skinn@gmail.com>
 Wendell Turner <skyking@ilikecarrots.com>
+dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
 Alessio Bogon <youtux@gmail.com> Alessio Bogon <youtux@users.noreply.github.com>
 Yohei Tamura <tamuhey@gmail.com>
 Maximilian Köhl <mail@koehlma.de>
@@ -116,6 +117,7 @@ anula <anula.szy@gmail.com>
 Jay Tuckey <jay.tuckey@gmail.com>
 Alexander Steffen <devel.20.webmeister@spamgourmet.com>
 Achim Herwig <achim.herwig@wodca.de>
+doronz88 <doron88@gmail.com>
 Randy Syring <randy@thesyrings.us>
 Lucas Inojosa <lucas.inojosa@gmail.com> Lucas Inojosa <linojosa@lalinojosa.home>
 adam j hartz <adam@smatz.net> adam j hartz <hz@mit.edu>
@@ -146,7 +148,7 @@ Andrés García García <a.garcia230395@gmail.com> Ad115 <a.garcia230395@gmail.c
 Sean Farley <sean@farley.io>
 Marduk Bolaños <mardukbp@mac.com>
 Marius van Niekerk <marius.v.niekerk@gmail.com>
-dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Stefano Rivera <github@rivera.za.net> Stefano Rivera <stefano@rivera.za.net>
 Lie Ryan <lie.1296@gmail.com>
 Jan Schulz <jasc@gmx.net>
 Samuel Dion-Girardeau <samuel.diongirardeau@gmail.com>
@@ -173,8 +175,6 @@ omjadas <omja.das@gmail.com>
 Jeremy Schlatter <jeremy@jeremyschlatter.com>
 Samuel Dion-Girardeau <samueldg@users.noreply.github.com>
 Oliver Bestwalter <oliver@bestwalter.de>
-doronz88 <doron88@gmail.com>
-Stefano Rivera <github@rivera.za.net> Stefano Rivera <stefano@rivera.za.net>
 Ivan Ogasawara <ivan.ogasawara@gmail.com>
 Mark Wiebe <mwwiebe@gmail.com>
 Nathan Hoad <nathan@getoffmalawn.com>
@@ -335,5 +335,16 @@ Thomas Hess <tux12345@justmail.de>
 kouhe3 <25522053+kouhe3@users.noreply.github.com>
 HackTheOxidation <86469309+HackTheOxidation@users.noreply.github.com>
 Cosine Chen <cosine_chen@163.com>
+mgunyho <20118130+mgunyho@users.noreply.github.com>
+ShalokShalom <shalokshalom@protonmail.ch>
+Wilfried Pollan <gitwipo@users.noreply.github.com>
+Jacqueline Leykam <me@jacqueline.id.au>
+Joshix-1 <57299889+Joshix-1@users.noreply.github.com>
+Nathan Monfils <nathanmonfils@gmail.com>
+JamesParrott <80779630+JamesParrott@users.noreply.github.com>
+Airat Makhmutov <108220148+rautyrauty@users.noreply.github.com>
+Matthieu LAURENT <matthieu.laurent69@protonmail.com>
+Daniel Saunders <dsaunders410@gmail.com>
+Andrew <andrew222651@fastmail.com>
 goodboy <tgoodlet@users.noreply.github.com>
 Atsushi Morimoto <atsushi.morimoto@dena.com>

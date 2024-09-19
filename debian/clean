@@ -1,0 +1,7 @@
+docs/api/_autosummary/
+docs/_build/
+docs/eventsbody
+xonsh/completion_parser_table.py
+xonsh/lexer_table.py
+xonsh/parser.out
+xonsh/parser_table.py

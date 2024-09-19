@@ -1,6 +1,7 @@
 """Directory stack and associated utilities for the xonsh shell.
 https://www.gnu.org/software/bash/manual/html_node/Directory-Stack-Builtins.html
 """
+
 import contextlib
 import glob
 import os
@@ -215,7 +216,7 @@ def cd(args, stdin=None):
         del args[0]
 
     if len(args) == 0:
-        d = os.path.expanduser("~")
+        d = env.get("HOME", os.path.expanduser("~"))
     elif len(args) == 1:
         d = os.path.expanduser(args[0])
         if not os.path.isdir(d):
@@ -244,9 +245,9 @@ def cd(args, stdin=None):
         return (
             "",
             (
-                "cd takes 0 or 1 arguments, not {}. An additional `-P` "
+                f"cd takes 0 or 1 arguments, not {len(args)}. An additional `-P` "
                 "flag can be passed in first position to follow symlinks."
-                "\n".format(len(args))
+                "\n"
             ),
             1,
         )

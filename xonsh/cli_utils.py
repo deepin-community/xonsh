@@ -177,7 +177,7 @@ def add_args(
             # for booleans set action automatically
             if (
                 flags
-                and (type(param.default) == bool)
+                and isinstance(param.default, bool)
                 and ("action" not in kwargs)
                 and ("type" not in kwargs)
             ):
@@ -442,9 +442,7 @@ class ArgparseCompleter:
         nargs = (
             act.nargs
             if isinstance(act.nargs, int)
-            else args_len + 1
-            if act.nargs in {ap.ONE_OR_MORE, ap.ZERO_OR_MORE}
-            else 1
+            else args_len + 1 if act.nargs in {ap.ONE_OR_MORE, ap.ZERO_OR_MORE} else 1
         )
         if len(self.remaining_args) >= nargs:
             # consume n-number of args

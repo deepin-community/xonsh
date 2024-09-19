@@ -1,4 +1,5 @@
 """Implements JSON version of xonsh history backend."""
+
 import collections
 import collections.abc as cabc
 import os
@@ -426,6 +427,10 @@ class JsonHistory(History):
                 xlj.ljdump(meta, f, sort_keys=True)
 
             try:
+                sudo_uid = os.environ.get("SUDO_UID")
+                sudo_gid = os.environ.get("SUDO_GID")
+                if None not in (sudo_uid, sudo_gid):
+                    os.chown(self.filename, int(sudo_uid), int(sudo_gid))
                 os.chmod(self.filename, 0o600)
             except Exception:  # pylint: disable=broad-except
                 pass

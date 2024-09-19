@@ -6,6 +6,7 @@ The following time_it alias and Timer was forked from the IPython project:
 * Copyright (c) 2001, Janko Hauser <jhauser@zscout.de>
 * Copyright (c) 2001, Nathaniel Gray <n8gray@caltech.edu>
 """
+
 import gc
 import itertools
 import math
@@ -231,11 +232,9 @@ def timeit_alias(args, stdin=None):
         # timing is 4 times faster than the slowest timing or not.
         if worst > 4 * best and best > 0 and worst > 1e-5:
             print(
-                (
-                    "The slowest run took {:0.2f} times longer than the "
-                    "fastest. This could mean that an intermediate result "
-                    "is being cached."
-                ).format(worst / best)
+                f"The slowest run took {worst / best:0.2f} times longer than the "
+                "fastest. This could mean that an intermediate result "
+                "is being cached."
             )
         print(
             f"{number} loops, best of {repeat}: {format_time(best, precision)} per loop"

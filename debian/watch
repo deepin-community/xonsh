@@ -1,3 +1,3 @@
 version=4
 opts=dversionmangle=auto,repacksuffix=+dfsg \
-https://github.com/xonsh/xonsh/tags .*/archive/refs/tags/@ANY_VERSION@@ARCHIVE_EXT@
+https://github.com/xonsh/xonsh/tags .*/refs/tags/@ANY_VERSION@@ARCHIVE_EXT@

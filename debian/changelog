@@ -1,3 +1,48 @@
+xonsh (0.15.1+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+    - Supports pytest 8. (Closes: #1063989)
+  * Refresh patches.
+  * Drop revert-pytest-8.patch, no longer needed.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 31 Mar 2024 12:30:13 -0400
+
+xonsh (0.14.4+dfsg-1) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * Correct bug number in previous changelog.
+
+  [ Gordon Ball ]
+  * New upstream version 0.14.4+dfsg
+  * d/patches: drop sphinx-5, applied upstream
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 10 Feb 2024 22:38:40 +0100
+
+xonsh (0.14.3+dfsg-1) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * New upstream version
+  * Standards-Version: 4.6.2 (routine-update)
+  * Build-Depends: s/dh-python/dh-sequence-python3/ (routine-update)
+  * Add salsa-ci file (routine-update)
+
+  [ Stefano Rivera ]
+  * Team upload.
+  * Patch: Support Sphinx >= 5. (Closes: #1057596)
+  * Build-Depends: python3-prompt-toolkit for auto docs.
+  * Clean correctly. (Closes: #1048535)
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 17 Dec 2023 13:41:44 -0400
+
+xonsh (0.14.1+dfsg-2) UNRELEASED; urgency=medium
+
+  * Team upload.
+  * Fix watchfile to detect new versions on github
+
+ -- Andreas Tille <tille@debian.org>  Thu, 14 Dec 2023 11:21:36 +0100
+
 xonsh (0.14.1+dfsg-1) unstable; urgency=medium
 
   * New upstream version 0.14.1+dfsg

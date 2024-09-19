@@ -3,7 +3,7 @@ Upstream-Name: xonsh
 Files-Excluded: xonsh/ply tests/man1 docs/_static .gitignore xonsh/webconfig
 
 Files: *
-Copyright: 2013-2022 the xonsh developers
+Copyright: 2013-2024 the xonsh developers
 License: bsd-2-clause-extended
 
 Files: xonsh/xoreutils/_which.py
@@ -12,7 +12,7 @@ License: MIT
 
 Files: debian/*
 Copyright: 2016-2017 Gordon Ball <gordon@chronitis.net>
-           2022, Stefano Rivera <stefanor@debian.org>
+           2022-2024, Stefano Rivera <stefanor@debian.org>
 License: MIT
 
 License: bsd-2-clause-extended

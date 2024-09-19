@@ -1,4 +1,5 @@
 """Tests pygments hooks."""
+
 import os
 import pathlib
 import stat
@@ -162,7 +163,7 @@ def test_XonshStyle_init_file_color_tokens(xs_LS_COLORS, monkeypatch):
         monkeypatch.delitem(file_color_tokens, n)
     xs = XonshStyle()
     assert xs.styles
-    assert type(file_color_tokens) is dict
+    assert isinstance(file_color_tokens, dict)
     assert set(file_color_tokens.keys()) == set(xs_LS_COLORS.env["LS_COLORS"].keys())
 
 
